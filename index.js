@@ -38,3 +38,14 @@ window.addEventListener('load', function() {
     footer.classList.remove('hidden');
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const boxHeaders = document.querySelectorAll('.box-header');
+
+  boxHeaders.forEach(function(header) {
+    header.addEventListener('click', function() {
+      const content = header.nextElementSibling;
+      content.classList.toggle('show');
+    });
+  });
+});
