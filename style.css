@@ -1,12 +1,197 @@
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #f1f1f1;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+@media screen and (max-width: 768px) {
+  .nav .button {
+    display: none;
+  }
+
+  .social-links {
+    display: none !important;
+  }
+
+  .header {
+    min-height: 80px !important;
+    max-height: 80px !important;
+  }
+
+  .social-page {
+    display: block !important;
+    font-size: 40px;
+  }
+
+  .social-page a {
+    color: #f1f1f1;
+    text-decoration: none;
+  }
+
+  body:not(.index-page) .footer {
+    display: none;
+  }
+
+  .footer {
+    font-size: 24px;
+    padding: 8px 12px;
+    transform: translateY(100%);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 50px !important;
+    max-height: 50px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer.hidden {
+    transform: translateY(100%);
+  }
+
+  .footer.show {
+    transform: translateY(0);
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    right: 5%;
+  }
+
+  .page-toggle {
+    font-family: 'Poetsen One';
+    background-color: #D5BDAF;
+    color: #f1f1f1;
+    padding: 10px 18px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .full-page {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #D5BDAF;
+    z-index: 999;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 35px;
+    line-height: 85px;
+    flex-direction: column; /* Add this line */
+    align-items: center; /* Add this line */
+  }
+  
+  .full-page.show {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .full-page a {
+    display: block; /* Add this line */
+    margin-bottom: 20px; /* Add this line */
+    text-align: center; /* Add this line */
+  }
+  
+  .close-button {
+    display: block !important;
+    position: absolute;
+    top: 40px;
+    right: 25px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #f1f1f1;
+    cursor: pointer;
+    font-size: 30px;
+  }
+
+  .box {
+  width: 77.5% !important;
+  }
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-links a {
+  margin: 0 10px;
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+.social-page {
+  display: none;
+}
+
+.close-button {
+  display: none;
+}
+
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px 16px;
   border-radius: 25px;
   background: #D5BDAF;
   color: #f1f1f1;
   position: sticky;
   margin-top: 0.5%;
+  margin-left: 0.25%;
+  margin-right: 0.25%;
   font-family: 'Poetsen One';
   transition: transform 0.5s ease-out;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  margin-right: 1%;
+  flex-wrap: wrap; /* Allow buttons to wrap to the next line if necessary */
+}
+
+.button {
+  font-family: 'Poetsen One';
+  background-color: #D5BDAF;
+  border: none;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #f1f1f1;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 20px;
+  margin: 5px; /* Add some margin around the buttons */
+  outline: none;
+  padding: 13px 23px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow .2s, transform .1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
 }
 
 .footer {
@@ -18,21 +203,34 @@
   border-radius: 25px;
   padding: 10px 16px;
   margin-bottom: 0.5%;
-  transform: translateY(100%);
+  margin-left: 0.25%;
+  margin-right: 0.25%;
+  margin-top: auto;
   transition: transform 0.5s ease-out;
 }
 
 .header.hidden {
   transform: translateY(-100%);
+  
 }
 
-.foooter.hidden {
+.footer.hidden {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   transform: translateY(100%);
 }
 
 .header.show,
 .footer.show {
   transform: translateY(0);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Style the header */
@@ -50,11 +248,15 @@ body {
 
 /* Page content */
 .content {
-  padding: 16px;
-  flex: 1;
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   align-items: center;
   justify-content: center;
+  z-index: -1;
 }
 
 /* The sticky class is added to the header with JS when it reaches its scroll position */
@@ -69,41 +271,10 @@ body {
   padding-top: 102px;
 }
 
-.nav {
-  position: relative;
-  left: 50%;
-  display: inline-block;
-}
-
 .info {
   position: relative;
-  left: 30px;
+  left: 3%;
   display: inline-block;
-}
-
-.button {
-  font-family: 'Poetsen One';
-  background-color: #D5BDAF;
-  border: none;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #f1f1f1;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: 750;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
-  padding: 13px 23px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  touch-action: manipulation;
-  transition: box-shadow .2s, transform .1s;
-  user-select: none;
-  -webkit-user-select: none;
-  width: auto;
 }
 
 .button:focus-visible {

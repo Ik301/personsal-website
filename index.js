@@ -6,6 +6,7 @@ window.addEventListener('load', function() {
   function revealHeaderFooter() {
     header.classList.remove('hidden');
     footer.classList.remove('hidden');
+    footer.classList.add('show');
     
     setTimeout(function() {
       header.style.transform = 'translateY(0)';
@@ -34,6 +35,7 @@ window.addEventListener('load', function() {
 
     setTimeout(animateText, duration / 2); // Delay the start of the animation by half the duration
   } else {
+    revealHeaderFooter();
     header.classList.remove('hidden');
     footer.classList.remove('hidden');
   }
@@ -47,5 +49,22 @@ document.addEventListener('DOMContentLoaded', function() {
       const content = header.nextElementSibling;
       content.classList.toggle('show');
     });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const menuIcon = document.querySelector('.menu-icon');
+  const fullPage = document.querySelector('.full-page');
+  const closeButton = document.querySelector('.close-button');
+  const footer = document.querySelector('.footer');
+
+  menuIcon.addEventListener('click', function() {
+    fullPage.classList.toggle('show');
+    footer.classList.toggle('hidden');
+  });
+
+  closeButton.addEventListener('click', function() {
+    fullPage.classList.remove('show');
+    footer.classList.remove('hidden');
   });
 });
