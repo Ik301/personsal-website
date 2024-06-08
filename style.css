@@ -122,14 +122,13 @@
   .close-button {
     display: block !important;
     position: absolute;
-    top: 40px;
-    right: 25px;
-    font-size: 24px;
+    top: 7.5%;
+    right: 10%;
     background: none;
     border: none;
     color: #f1f1f1;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 45px;
   }
 
   .box {
@@ -255,6 +254,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-size: 18px;
 }
 
 /* Page content */
