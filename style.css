@@ -132,7 +132,11 @@
   }
 
   .box {
-  width: 77.5% !important;
+    width: 77.5% !important;
+  }
+
+  .box.header {
+    font-size: 20px;
   }
 }
 
